@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo ss -tulnpe
+sudo netstat -tulnpe
