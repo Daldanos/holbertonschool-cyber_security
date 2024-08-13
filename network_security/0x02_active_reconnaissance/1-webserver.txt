@@ -1,1 +1,1 @@
-Nginx
+Nginx.1.18.0
