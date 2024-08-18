@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo ss -t -p -n
+sudo ss -t -p -n | grep -E 'LISTEN|ESTAB'
