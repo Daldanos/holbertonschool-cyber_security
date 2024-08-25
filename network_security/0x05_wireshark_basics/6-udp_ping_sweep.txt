@@ -1,1 +1,1 @@
-udp && udp.port == 40125
+udp && udp.dstport == 40125
