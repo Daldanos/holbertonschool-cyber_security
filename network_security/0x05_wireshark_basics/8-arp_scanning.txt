@@ -1,1 +1,1 @@
-arp.dst.hw_mac
+arp.dst.hw_mac == d4:76:a0:53:43:94
