@@ -1,2 +1,2 @@
 #!/bin/bash
-dmesg | grep -i "linux version" | head -n 1
+grep -i 'linux version' dmesg | head -n 1
