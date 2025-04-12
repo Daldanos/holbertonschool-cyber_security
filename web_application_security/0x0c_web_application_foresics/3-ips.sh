@@ -1,2 +1,2 @@
 #!/bin/bash
-grep "Accepted password" auth.log | awk -F'[ :]+' '{for(i=1; i<=NF; i++) if ($i ~ /^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$/) print $i}' | sort -u | wc -l
+grep -i -E "iptables -A|iptables -I|ufw allow|adding firewall rule" auth.log | wc -l
