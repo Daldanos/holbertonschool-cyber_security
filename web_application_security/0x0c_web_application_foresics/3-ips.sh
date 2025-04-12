@@ -1,2 +1,2 @@
 #!/bin/bash
-grep "Accepted password" auth.log | grep -oE 'from [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | awk '{print $2}' | sort -u | wc -l
+grep "Accepted password" auth.log | awk -F'[ :]+' '{for(i=1; i<=NF; i++) if ($i ~ /^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$/) print $i}' | sort -u | wc -l
