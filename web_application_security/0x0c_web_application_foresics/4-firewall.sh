@@ -1,2 +1,2 @@
 #!/bin/bash
-grep -i -E "iptables -A|ufw allow|firewall rule added" auth.log | wc -l
+grep -i -E "iptables -A|iptables -I|ufw allow|adding firewall rule" auth.log | wc -l
