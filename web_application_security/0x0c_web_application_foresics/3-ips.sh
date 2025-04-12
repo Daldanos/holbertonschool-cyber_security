@@ -1,7 +1,2 @@
 #!/bin/bash
-if [ ! -f "auth.log" ]; then
-    echo "Error: El archivo auth.log no existe en el directorio actual."
-    exit 1
-fi
-
-grep "Accepted password" "auth.log" | awk '{print $11}' | sort -u | wc -l
+grep "Accepted password" auth.log | awk '{for(i=1; i<=NF; i++) if ($i == "from") {print $(i+1); break}}' | sort -u | wc -l
