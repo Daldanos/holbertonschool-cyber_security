@@ -1,2 +1,2 @@
 #!/bin/bash
-awk '{print $1}' access.log | sort -u | wc -l
+grep "sshd" auth.log | grep "Accepted password" | awk '{for (i=1; i<=NF; i++) if ($i=="from") print $(i+1)}' | sort -u | wc -l
