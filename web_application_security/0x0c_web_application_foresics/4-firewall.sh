@@ -1,2 +1,2 @@
 #!/bin/bash
-grep -i -E "iptables -A|iptables -I|ufw allow|adding firewall rule" auth.log | wc -l
+grep -E "new user|useradd" auth.log | awk -F'=' '{print $2}' | awk -F',' '{print $1}' | sort -u | tr '\n' ',' | sed 's/,$//'
