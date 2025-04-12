@@ -1,5 +1,2 @@
 #!/bin/bash
-ips=$(awk '/Accepted password/ || /Failed password/ {print $11}' auth.log)
-unique_ips=$(echo "$ips" | sort -u)
-num_atacantes=$(echo "$unique_ips" | wc -l)
-echo "$num_atacantes"
+grep "sshd" auth.log | grep "Accepted" | awk '{for (i=1; i<=NF; i++) if ($i=="from") print $(i+1)}' | sort -u | wc -l
