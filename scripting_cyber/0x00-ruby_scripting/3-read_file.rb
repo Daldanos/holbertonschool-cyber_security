@@ -16,8 +16,11 @@ def count_user_ids(path)
     user_counts[user_id] += 1 if user_id
   end
   
+  # Convert keys to integers for numerical sorting, then sort
+  user_counts = user_counts.transform_keys(&:to_i)
+  
   # Print results sorted numerically by user ID
-  user_counts.sort_by { |user_id, _| user_id.to_i }.each do |user_id, count|
+  user_counts.sort.each do |user_id, count|
     puts "#{user_id}: #{count}"
   end
 end
