@@ -16,8 +16,8 @@ def count_user_ids(path)
     user_counts[user_id] += 1 if user_id
   end
   
-  # Print results sorted by user ID
-  user_counts.sort.each do |user_id, count|
+  # Print results sorted numerically by user ID
+  user_counts.sort_by { |user_id, _| user_id.to_i }.each do |user_id, count|
     puts "#{user_id}: #{count}"
   end
 end
