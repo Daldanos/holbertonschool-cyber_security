@@ -19,8 +19,10 @@ def post_request(url, body_params)
   puts "Response status: #{response.code} #{response.message}"
   puts "Response body:"
   
-  # Pretty print JSON response
-  if response['content-type']&.include?('application/json')
+  # Handle empty response or non-JSON response
+  if response.body.strip.empty?
+    puts "{}"
+  elsif response['content-type']&.include?('application/json')
     parsed_json = JSON.parse(response.body)
     puts JSON.pretty_generate(parsed_json)
   else
