@@ -53,6 +53,7 @@ if options[:list]
   if tasks.empty?
     puts "No tasks found."
   else
+    puts "Tasks:"  # <-- LÍNEA AGREGADA
     tasks.each_with_index do |task, index|
       puts "#{index + 1}. #{task}"
     end
