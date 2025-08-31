@@ -8,22 +8,22 @@ def count_user_ids(path)
   file = File.read(path)
   data = JSON.parse(file)
   
-  # Count user IDs
-  user_counts = Hash.new(0)
+  # Count user IDs y convertir a integer inmediatamente
+  user_counts = {}
   
   data.each do |item|
-    user_id = item['userId']
-    user_counts[user_id] += 1 if user_id
+    if item['userId']
+      user_id = item['userId'].to_i
+      user_counts[user_id] ||= 0
+      user_counts[user_id] += 1
+    end
   end
   
-  # Convertir keys a integers y ordenar numéricamente
-  user_counts = user_counts.transform_keys(&:to_i)
+  # Obtener keys ordenadas numéricamente
+  sorted_keys = user_counts.keys.sort
   
-  # Ordenar por la clave numérica y crear array ordenado
-  sorted_array = user_counts.sort
-  
-  # Imprimir en el orden correcto
-  sorted_array.each do |user_id, count|
-    puts "#{user_id}: #{count}"
+  # Imprimir en orden numérico
+  sorted_keys.each do |user_id|
+    puts "#{user_id}: #{user_counts[user_id]}"
   end
 end
