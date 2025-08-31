@@ -24,7 +24,11 @@ def post_request(url, body_params)
     puts "{}"
   elsif response['content-type']&.include?('application/json')
     parsed_json = JSON.parse(response.body)
-    puts JSON.pretty_generate(parsed_json)
+    if parsed_json.empty?
+      puts "{}"
+    else
+      puts JSON.pretty_generate(parsed_json)
+    end
   else
     puts response.body
   end
